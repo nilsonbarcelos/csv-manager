@@ -19,12 +19,12 @@ const processProductFile = async () => {
             while (record = parser.read()) {
                 let categoryId = parseInt(record[8])
                 if(Number.isInteger(categoryId)){
-                    obj = {
+                    product = {
                         "productId": record[0],
                         "productName": record[1],
                         "productCategoryId": categoryId,
                     }
-                    productList.push(obj)
+                    productList.push(product)
                 }
             }
         });
@@ -53,11 +53,11 @@ const processCategoryProductFile = async () => {
             while (record = parser.read()) {
                 let categoryId = parseInt(record[0])
                 if(Number.isInteger(categoryId)){
-                    obj = {
+                    category = {
                         "categorytId": categoryId,
                         "categoryName": record[1]
                     }
-                    categoryList.push(obj)
+                    categoryList.push(category)
                 }
             }
         });
@@ -80,13 +80,14 @@ const downloadFile = async () => {
         productName: 'productName',
         categoryName: 'categoryName',
     }
-    stringify(productCategoryList, { header: true, columns: columns }, (err, output) => {
-        if (err) throw err;
-        fs.writeFile(`product-category.csv`, output, (err) => {
+    stringify(productCategoryList, { header: true, columns: columns },
+        (err, output) => {
             if (err) throw err;
-            console.log(`product-category.csv.`);
+            fs.writeFile(`product-category.csv`, output, (err) => {
+                if (err) throw err;
+                console.log(`product-category.csv.`);
+            })
         })
-    })
 }
 
 const run = async()=> {
