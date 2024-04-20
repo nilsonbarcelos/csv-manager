@@ -1,0 +1,16 @@
+{
+  "name": "csv-manager",
+  "version": "1.0.0",
+  "description": "Script to read and export csv files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nilson Barcelos",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^5.5.5",
+    "csv-stringify": "^6.4.6",
+    "file-system": "^2.2.2"
+  }
+}
