@@ -90,13 +90,15 @@ const downloadFile = async () => {
         })
 }
 
-const run = async()=> {
+const run = async () => {
     await processProductFile()
     await processCategoryProductFile()
     productList.forEach(product => {
         categoryList.forEach(category => {
-            if (product.productCategoryId == category.categorytId){
-                productCategory = [product.productId, product.productName, category.categoryName]
+            if (product.productCategoryId == category.categorytId) {
+                productCategory = [product.productId,
+                product.productName,
+                category.categoryName]
                 productCategoryList.push(productCategory)
             }
         })
